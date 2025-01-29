@@ -24,6 +24,15 @@ pipeline {
                 sh 'sudo docker push samirachallouf4/aston_villa:${DOCKER_TAG}'
             }
         }
+        stage('Deploy') {
+    steps {
+        sshagent(credentials: ['Vagrant_ssh']) {
+            sh "ssh -p 2222 vagrant@127.0.0.1"
+            sh "ssh -p 2222 vagrant@127.0.0.1 'sudo docker run ${image_name}:${DOCKER_TAG}'"
+        }
+    }
+}
+
     }
 }
 
