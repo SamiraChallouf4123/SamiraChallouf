@@ -18,15 +18,15 @@ pipeline {
                 sh 'docker build -t samirachallouf4/aston_villa:${DOCKER_TAG} .'
             }
         }
-    }
-    stage('DockerHub Push') {
-    steps {
-        sh 'sudo docker login -u samirachallouf4 -p samira123'
-        sh 'sudo docker push samirachallouf4/aston_villa:${DOCKER_TAG}'
+        stage('DockerHub Push') {
+            steps {
+                sh 'sudo docker login -u samirachallouf4 -p samira123'
+                sh 'sudo docker push samirachallouf4/aston_villa:${DOCKER_TAG}'
+            }
+        }
     }
 }
 
-}
 def getVersion() {
     return sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
 }
