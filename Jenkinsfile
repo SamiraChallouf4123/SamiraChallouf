@@ -26,11 +26,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshagent(credentials: ['Vagrant_ssh']) {
-                    sh "ssh -p 2222 vagrant@127.0.0.1"
-                    sh "ssh -p 2222 vagrant@127.0.0.1 'sudo docker run ${aston_villa}:${DOCKER_TAG}'"
+                    sh "ssh root@172.16.130.155"
+                    sh "ssh root@172.16.130.155 'sudo docker run ${aston_villa}:${DOCKER_TAG}'"
                 }
-            }
+            
         }
     }
 }
