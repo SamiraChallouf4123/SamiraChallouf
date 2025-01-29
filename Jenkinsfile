@@ -15,7 +15,7 @@ stage ('Clone Stage') {
 }
 stage ('Docker Build') {
     steps {
-        sh 'docker build -t samirachallouf4/Aston_Villa:${DOCKER_TAG} .'
+        sh 'docker build -t samirachallouf4/aston_villa :${DOCKER_TAG} .'
     }
 }
 }
