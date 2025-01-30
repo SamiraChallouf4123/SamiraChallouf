@@ -24,6 +24,13 @@ pipeline {
                 sh 'sudo docker push samirachallouf4/aston_villa:${DOCKER_TAG}'
             }
         }
+        stage('Deploy') {
+            steps {
+                    sh "ssh vagrant@192.168.213.143"
+                    sh "ssh vagrant@192.168.213.143 'sudo docker run ${aston_villa}:${DOCKER_TAG}'"
+                }
+            
+        }
     }
 }
 
