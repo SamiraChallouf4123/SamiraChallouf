@@ -26,8 +26,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                    sh "ssh root@172.16.130.155"
-                    sh "ssh root@172.16.130.155 'sudo docker run ${aston_villa}:${DOCKER_TAG}'"
+                    sh "ssh admin@192.168.213.143"
+                    sh "ssh admin@192.168.213.143 'sudo docker run ${aston_villa}:${DOCKER_TAG}'"
                 }
             
         }
